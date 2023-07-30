@@ -10,7 +10,6 @@ import Forget from "../pages/Auth/Forget";
 import Login from "../pages/Auth/Login";
 import Admin from "../pages/Admin";
 import NotFound from "../pages/NotFound";
-import AddUser from "../pages/AddUser";
 import Riwayat from "../components/Akun/Riwayat";
 import JadwalDokter from "../pages/JadwalDokter";
 import Register from "../pages/Auth/Register";

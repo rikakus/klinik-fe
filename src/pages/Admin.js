@@ -12,7 +12,6 @@ import {
   Tabs,
 } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
-import AddUser from "./AddUser";
 import DaftarPasien from "../components/Admin/DaftarPasien";
 import DaftarDokter from "../components/Admin/DaftarDokter";
 import DaftarAntrian from "../components/Admin/DaftarAntrian";
