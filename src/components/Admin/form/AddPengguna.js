@@ -344,7 +344,7 @@ export default function AddPengguna(props) {
                       },
                       {
                         pattern: new RegExp(
-                          "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$"
+                          "^(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).{8,}$"
                         ),
                         message:
                           "Kata Sandi harus Berisi Setidaknya Satu Huruf Kecil, Huruf Besar, dan Spesial Karakter",
