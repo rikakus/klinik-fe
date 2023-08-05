@@ -20,7 +20,7 @@ export default function Periksa() {
 
   const [isLoading, setIsLoading] = useState(false);
   const [dataSourcePeriksa, setDataSourcePeriksa] = useState([]);
-  const [dataId, setDataId] = useState("");
+  const [data, setData] = useState({});
 
   const getPeriksa = () => {
     setIsLoading(true);
@@ -129,7 +129,7 @@ export default function Periksa() {
               disabled={index.sudahSelesai === 1}
               onClick={(e) => {
                 setHidden(false);
-                setDataId(index.id);
+                setData(index);
               }}
             >
               Periksa
@@ -160,12 +160,18 @@ export default function Periksa() {
         title={"Periksa"}
         open={!hidden}
         // // onOk={(e) => setHidden(false)}
-        onCancel={(e) => setHidden(true)}
+        onCancel={(e) => {
+          setHidden(true);
+          getPeriksa();
+        }}
         footer={[]}
       >
         <PeriksaDokter
-          id={dataId}
-          hidden={(e) => setHidden(true)}
+          hidden={(e) => {
+            setHidden(true);
+            getPeriksa();
+          }}
+          data={data}
           isHidden={hidden}
         />
       </Modal>

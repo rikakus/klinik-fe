@@ -26,7 +26,7 @@ export default function PeriksaDokter(props) {
     AxiosRequest.PutAxiosRequest("/periksa/dokter", {
       ...forms,
       idDokter: id,
-      id: props.id,
+      id: props.data.id,
     })
       .then((res) => {
         if (res.data.status === "failed") {
@@ -65,8 +65,20 @@ export default function PeriksaDokter(props) {
   };
 
   useEffect(() => {
-    console.log(props.id);
-  }, []);
+    if (props.isHidden === false) {
+      console.log("jalan 1");
+      form.setFieldsValue(props.data);
+      setForms(props.data);
+    } else {
+      console.log("jalan 1 2");
+      form.setFieldsValue({
+        nasihat: "",
+        diagnosa: "",
+        resepDokter: "",
+        sudahSelesai: false,
+      });
+    }
+  }, [form, props.data, props.isHidden]);
 
   const onCheck = async (e) => {
     try {
