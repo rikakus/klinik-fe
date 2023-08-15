@@ -2,6 +2,7 @@ import { Button, Descriptions, Modal } from "antd";
 import React, { useEffect, useState } from "react";
 import AddPengguna from "../Admin/form/AddPengguna";
 import AxiosRequest from "../../helper/AxiosRequest";
+import moment from "moment";
 
 export default function AkunDetail() {
   const id = JSON.parse(localStorage.getItem("token")).id;
@@ -18,7 +19,7 @@ export default function AkunDetail() {
         if (res.data.status === "success") {
           setData({
             ...res.data.data[0],
-            jenisKelamin: res.data.data[0].jeni_kelamin,
+            jenisKelamin: res.data.data[0].jenis_kelamin,
             noHp: res.data.data[0].no_hp,
             tanggalLahir: res.data.data[0].tanggal_lahir,
           });
@@ -55,7 +56,11 @@ export default function AkunDetail() {
           </Descriptions.Item>
 
           <Descriptions.Item span={24} label="Jenis Kelamin">
-            {data.jenisKelamin === "L" ? "Laki - laki" : "Perempuan" || "-"}
+            {data.jenis_kelamin === "L"
+              ? "Laki - laki"
+              : data.jenis_kelamin === "P"
+              ? "Perempuan"
+              : "-"}
           </Descriptions.Item>
 
           <Descriptions.Item span={24} label="Agama">
@@ -67,7 +72,8 @@ export default function AkunDetail() {
           </Descriptions.Item>
 
           <Descriptions.Item span={24} label="Tanggal Lahir">
-            {data.tanggalLahir || "-"}
+            {moment(data.tanggal_lahir, "YYYY-MM-DD").format("DD-MM-YYYY") ||
+              "-"}
           </Descriptions.Item>
 
           <Descriptions.Item span={24} label="Email">

@@ -61,6 +61,8 @@ const columns = [
       title: "Proses",
       dataIndex: "sudahSelesai",
       key: "sudahSelesai",
+      render: (text, index) =>
+        text === 1 ? "Sudah Diperiksa" : "Belum Diperiksa",
     },
     {
       align: "center",
